@@ -93,7 +93,6 @@ public class Gun : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        // количество необходимых патронов
         int bulletCount = maxAmmo - currentAmmo;
 
         animator.SetBool("isReloading", false);
