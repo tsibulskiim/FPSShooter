@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerHPText.text = $"+{playerHP}";
 
-        if (FindObjectsByType<Enemy>(FindObjectsSortMode.None).All(enemy => enemy.enemyHP <= 0))
+        if (FindObjectsOfType<Enemy>().All(enemy => enemy.enemyHP <= 0))
             win = true;
 
         if (win || lose)

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class IdleState : StateMachineBehaviour
 {
-    float timer;
-    Transform player;
-    float chaseRange = 10;
+    private float timer;
+    private Transform player;
+    private readonly float chaseRange = 10;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

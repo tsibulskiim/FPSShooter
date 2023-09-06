@@ -38,6 +38,7 @@ public class Menu : MonoBehaviour
 
     public void QuitGame()
     {
+        SaveGame();
         Application.Quit();
     }
 

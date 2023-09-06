@@ -4,9 +4,11 @@ using TMPro;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    InputAction switching;
+    private InputAction switching;
+
     public int selectedWeapon = 0;
     public TextMeshProUGUI ammoInfo;
+
     void Start()
     {
         switching = new InputAction("Scrool", binding: "<mouse>/scroll");

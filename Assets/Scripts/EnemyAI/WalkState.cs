@@ -6,11 +6,11 @@ using UnityEngine.AI;
 
 public class WalkState : StateMachineBehaviour
 {
-    float timer = 0;
-    List<Transform> wayPoints = new();
+    private float timer = 0;
+    private List<Transform> wayPoints = new();
     private NavMeshAgent agent;
     private Transform player;
-    float chaseRange = 10;
+    private readonly float chaseRange = 10;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

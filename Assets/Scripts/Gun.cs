@@ -4,25 +4,23 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
+    private float nextTimeToFire = 0;
+    private bool isReloading = false;
+    private InputAction shoot;
 
     public Transform fpsCam;
     public float range = 20;
     public float impactForce = 150;
-    public int fireRate = 10;
-    private float nextTimeToFire = 0;
+    public int fireRate = 10;  
     public int currentAmmo;
     public int maxAmmo = 10;
     public int magazineSize = 30;
-    public float reloadTime = 2;
-    private bool isReloading = false;
+    public float reloadTime = 2;  
     public int damageAmount = 20;
-
     public GameObject impactEffect;
     public ParticleSystem muzzleFlush;
-
     public Animator animator;
 
-    InputAction shoot;
     void Start()
     {
         shoot = new InputAction("Shoot", binding: "<mouse>/leftButton");

@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
-    public float speed = 15;
+    private bool isGrounded;
+    private Vector3 velocity;
     private Vector3 move;
 
+    public float speed = 15;
     public float gravity = -10;
     public float jumpHeight = 8;
-    private Vector3 velocity;
-
     public Transform groundCheck;
     public LayerMask groundLayer;
-    private bool isGrounded;
     public Animator animator;
 
     void Start()
@@ -26,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
+        //Debug.Log($"x: {x}; y: {z};");
 
         float runSpeed = 0;
         if (Input.GetKey(KeyCode.LeftShift))
