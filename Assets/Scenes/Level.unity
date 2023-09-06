@@ -1522,9 +1522,9 @@ MonoBehaviour:
   range: 30
   impactForce: 100
   fireRate: 8
-  currentAmmo: 0
-  maxAmmo: 10
-  magazineSize: 30
+  currentAmmo: 10
+  magazineSize: 10
+  restAmmo: 30
   reloadTime: 2
   damageAmount: 2
   impactEffect: {fileID: 100002, guid: ac1aa04288fad804ba1cd769f4377aaf, type: 3}
@@ -3534,11 +3534,11 @@ MonoBehaviour:
   fpsCam: {fileID: 963194228}
   range: 100
   impactForce: 200
-  fireRate: 5
-  currentAmmo: 0
-  maxAmmo: 10
-  magazineSize: 30
-  reloadTime: 2
+  fireRate: 2
+  currentAmmo: 5
+  magazineSize: 5
+  restAmmo: 30
+  reloadTime: 4
   damageAmount: 10
   impactEffect: {fileID: 100002, guid: 99c73c92ac40473459640b165473206f, type: 3}
   muzzleFlush: {fileID: 486931176}
@@ -4074,10 +4074,10 @@ MonoBehaviour:
   range: 50
   impactForce: 150
   fireRate: 10
-  currentAmmo: 0
-  maxAmmo: 10
-  magazineSize: 30
-  reloadTime: 2
+  currentAmmo: 15
+  magazineSize: 15
+  restAmmo: 30
+  reloadTime: 3
   damageAmount: 5
   impactEffect: {fileID: 100002, guid: ac1aa04288fad804ba1cd769f4377aaf, type: 3}
   muzzleFlush: {fileID: 1656092151}

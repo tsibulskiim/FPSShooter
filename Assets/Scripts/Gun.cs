@@ -11,10 +11,19 @@ public class Gun : MonoBehaviour
     public Transform fpsCam;
     public float range = 20;
     public float impactForce = 150;
-    public int fireRate = 10;  
+    public int fireRate = 10;
+    /// <summary>
+    /// Текущие патроны
+    /// </summary>
     public int currentAmmo;
-    public int maxAmmo = 10;
-    public int magazineSize = 30;
+    /// <summary>
+    /// Патронов в магазине
+    /// </summary>
+    public int magazineSize = 10;
+    /// <summary>
+    /// Остаток патронов
+    /// </summary>
+    public int restAmmo = 30;
     public float reloadTime = 2;  
     public int damageAmount = 20;
     public GameObject impactEffect;
@@ -26,7 +35,7 @@ public class Gun : MonoBehaviour
         shoot = new InputAction("Shoot", binding: "<mouse>/leftButton");
         shoot.Enable();
 
-        currentAmmo = maxAmmo;
+        currentAmmo = magazineSize;
 
     }
 
@@ -39,7 +48,7 @@ public class Gun : MonoBehaviour
     void Update()
     {
 
-        if (currentAmmo == 0 && magazineSize == 0)
+        if (currentAmmo == 0 && restAmmo == 0)
         {
             animator.SetBool("isShooting", false);
             return;
@@ -57,7 +66,7 @@ public class Gun : MonoBehaviour
             Fire();
         }
 
-        if (!isReloading && magazineSize > 0 && currentAmmo != maxAmmo)
+        if (!isReloading && restAmmo > 0 && currentAmmo != magazineSize)
             if (currentAmmo == 0 || Input.GetKeyDown(KeyCode.R))
                 StartCoroutine(Reload());
     }
@@ -91,18 +100,18 @@ public class Gun : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        int bulletCount = maxAmmo - currentAmmo;
+        int needAmmo = magazineSize - currentAmmo;
 
         animator.SetBool("isReloading", false);
-        if (magazineSize >= bulletCount)
+        if (restAmmo >= needAmmo)
         {
-            currentAmmo = maxAmmo;
-            magazineSize -= bulletCount;
+            currentAmmo = magazineSize;
+            restAmmo -= needAmmo;
         }
         else
         {
-            currentAmmo += magazineSize;
-            magazineSize = 0;
+            currentAmmo += restAmmo;
+            restAmmo = 0;
         }
 
         isReloading = false;

@@ -21,7 +21,7 @@ public class WeaponSwitching : MonoBehaviour
     {
         Gun currentGun = FindObjectOfType<Gun>();
 
-        ammoInfo.text = $"{currentGun.currentAmmo}/{currentGun.magazineSize}";
+        ammoInfo.text = $"{currentGun.currentAmmo}/{currentGun.restAmmo}";
 
         float scrollValue = switching.ReadValue<Vector2>().y;
 
