@@ -30,11 +30,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -46,6 +43,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
   serializedClasses:
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
@@ -77,11 +75,12 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
+    - UnityEngine.UI.Slider/SliderEvent
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: Menu
-    methodName: PlayGame
+    methodName: LoadSceneAsync
   - assembly: Assembly-CSharp
     fullTypeName: Menu
     methodName: QuitGame
@@ -155,21 +154,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5388}
     - Class: 114
-      Script: {instanceID: 5468}
+      Script: {instanceID: 5446}
     - Class: 114
-      Script: {instanceID: 5824}
+      Script: {instanceID: 5470}
     - Class: 114
-      Script: {instanceID: 5986}
+      Script: {instanceID: 5826}
     - Class: 114
-      Script: {instanceID: 6152}
+      Script: {instanceID: 5894}
     - Class: 114
-      Script: {instanceID: 6404}
+      Script: {instanceID: 5990}
     - Class: 114
-      Script: {instanceID: 6502}
+      Script: {instanceID: 6156}
     - Class: 114
-      Script: {instanceID: 37536}
+      Script: {instanceID: 6410}
     - Class: 114
-      Script: {instanceID: 37942}
+      Script: {instanceID: 6508}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -211,19 +210,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
     - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
     - Class: 49
-      Script: {instanceID: 0}
-    - Class: 64
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -248,15 +239,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4626}
     - Class: 114
+      Script: {instanceID: 5302}
+    - Class: 114
       Script: {instanceID: 5388}
     - Class: 114
-      Script: {instanceID: 5986}
+      Script: {instanceID: 5990}
     - Class: 114
-      Script: {instanceID: 6152}
+      Script: {instanceID: 6156}
     - Class: 114
-      Script: {instanceID: 6502}
+      Script: {instanceID: 6398}
     - Class: 114
-      Script: {instanceID: 143112}
+      Script: {instanceID: 6508}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -468,7 +461,7 @@ ScriptsOnlyBuild:
     className: UnityMessageListener
   - hash:
       serializedVersion: 2
-      Hash: e4ae0ff07de546f68e5ee2c7fa054d81
+      Hash: b8a5b6f0a881087b3fe54a4edf1ee37c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gun
@@ -966,6 +959,12 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 9bc5072fc13bc5019dfba7fd488d5be5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Projectile
+  - hash:
+      serializedVersion: 2
       Hash: 9fbdf46fdb0116ca3090f27aff0b3f6f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1026,6 +1025,12 @@ ScriptsOnlyBuild:
     className: PlayerInputManagerEditor
   - hash:
       serializedVersion: 2
+      Hash: 08a48579747c33ded589e95206351459
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerManager
+  - hash:
+      serializedVersion: 2
       Hash: a1aa98c78061c6f03a8c124cda576e67
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1054,6 +1059,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseUpAsButtonMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 35c6287645c1d5eb62aff2e1cfbeb4f8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Menu
   - hash:
       serializedVersion: 2
       Hash: 5742081d5cef87fdd012df77fa577c1a
@@ -1360,26 +1371,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 08a48579747c33ded589e95206351459
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerManager
-  - hash:
-      serializedVersion: 2
-      Hash: 9bc5072fc13bc5019dfba7fd488d5be5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Projectile
-  - hash:
-      serializedVersion: 2
-      Hash: d7912c765efb61cb6ee4c7c78f120d21
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Menu
   platform: 19
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Level.unity
-  playerPath: D:/Unity/ShooterV3/Release/ShooterV3.exe
+  playerPath: D:/Unity/FPSShooter/Release/ShooterV3.exe

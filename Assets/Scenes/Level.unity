@@ -1707,10 +1707,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369979228eb4744fbac758db286e1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsCam: {fileID: 963194228}
+  fpsCam: {fileID: 963194225}
   range: 30
   impactForce: 100
   fireRate: 8
+  fieldOfView: 60
   currentAmmo: 10
   magazineSize: 10
   restAmmo: 30
@@ -1826,7 +1827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1294672646082164, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1361264557881328, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
       propertyPath: m_IsActive
@@ -2451,7 +2452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481417426184300, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4944291180234768, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
       propertyPath: m_RootOrder
@@ -3720,10 +3721,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369979228eb4744fbac758db286e1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsCam: {fileID: 963194228}
+  fpsCam: {fileID: 963194225}
   range: 100
   impactForce: 200
   fireRate: 2
+  fieldOfView: 45
   currentAmmo: 5
   magazineSize: 5
   restAmmo: 30
@@ -4259,10 +4261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369979228eb4744fbac758db286e1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsCam: {fileID: 963194228}
+  fpsCam: {fileID: 963194225}
   range: 50
   impactForce: 150
   fireRate: 10
+  fieldOfView: 55
   currentAmmo: 15
   magazineSize: 15
   restAmmo: 30

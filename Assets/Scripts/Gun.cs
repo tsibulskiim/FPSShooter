@@ -6,12 +6,17 @@ public class Gun : MonoBehaviour
 {
     private float nextTimeToFire = 0;
     private bool isReloading = false;
+    private int defaultFieldOfView = 60;
+    private Camera camComponent;
+    private Transform camTransform;
     private InputAction shoot;
+    private InputAction zoom;
 
-    public Transform fpsCam;
+    public GameObject fpsCam;
     public float range = 20;
     public float impactForce = 150;
     public int fireRate = 10;
+    public int fieldOfView = 60;
     /// <summary>
     /// Текущие патроны
     /// </summary>
@@ -33,9 +38,15 @@ public class Gun : MonoBehaviour
     void Start()
     {
         shoot = new InputAction("Shoot", binding: "<mouse>/leftButton");
+        zoom = new InputAction("Zoom", binding: "<mouse>/rightButton");
+
         shoot.Enable();
+        zoom.Enable();
 
         currentAmmo = magazineSize;
+
+        camComponent = fpsCam.GetComponent<Camera>();
+        camTransform = fpsCam.transform;
 
     }
 
@@ -47,6 +58,8 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+
+        camComponent.fieldOfView = zoom.ReadValue<float>() == 1 ? fieldOfView : defaultFieldOfView;
 
         if (currentAmmo == 0 && restAmmo == 0)
         {
@@ -69,6 +82,7 @@ public class Gun : MonoBehaviour
         if (!isReloading && restAmmo > 0 && currentAmmo != magazineSize)
             if (currentAmmo == 0 || Input.GetKeyDown(KeyCode.R))
                 StartCoroutine(Reload());
+
     }
 
     private void Fire()
@@ -77,7 +91,7 @@ public class Gun : MonoBehaviour
 
         currentAmmo--;
         
-        if (Physics.Raycast(fpsCam.position, fpsCam.forward, out RaycastHit hit, range))
+        if (Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit hit, range))
         {
             if (hit.rigidbody != null)
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
