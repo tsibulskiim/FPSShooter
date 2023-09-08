@@ -4,13 +4,16 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Collections;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public Slider loadProgress;
+    public GameObject loadScreen;
     public static int winCount;
     public static int loseCount;
-
     public void Start()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -31,9 +34,21 @@ public class Menu : MonoBehaviour
 
         scoreText.text += $"\nWins: {winCount}\nDefeats: {loseCount}";
     }
-    public void PlayGame()
+    public void LoadSceneAsync(string sceneName)
     {
-        SceneManager.LoadScene("Level");
+        StartCoroutine(LoadScene(sceneName));
+    }
+
+    IEnumerator LoadScene(string sceneName)
+    {
+        var loadData = SceneManager.LoadSceneAsync(sceneName);
+        loadScreen.SetActive(true);
+        while (!loadData.isDone)
+        {
+            loadProgress.value = loadData.progress;
+            yield return null;
+        }
+
     }
 
     public void QuitGame()
@@ -59,7 +74,7 @@ public class Menu : MonoBehaviour
         Debug.Log("Game data saved!");
     }
 
-    public void LoadGame()
+    private void LoadGame()
     {
         if (File.Exists(Application.persistentDataPath + "/settings.dat"))
         {

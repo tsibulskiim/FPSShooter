@@ -22,7 +22,7 @@ public class WalkState : StateMachineBehaviour
             wayPoints.Add(wayPoint);
 
         agent = animator.GetComponent<NavMeshAgent>();
-        agent.SetDestination(wayPoints[0].position);
+        agent.SetDestination(GetRandomWayPoint().position);
 
     }
 
@@ -30,7 +30,7 @@ public class WalkState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (agent.remainingDistance <= agent.stoppingDistance)
-            agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
+            agent.SetDestination(GetRandomWayPoint().position);
 
         timer += Time.deltaTime;
         
@@ -60,4 +60,6 @@ public class WalkState : StateMachineBehaviour
     {
         // Implement code that sets up animation IK (inverse kinematics)
     }
+
+    private Transform GetRandomWayPoint() => wayPoints[Random.Range(0, wayPoints.Count)];
 }
